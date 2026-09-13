@@ -1,39 +1,136 @@
+/*
+ * Базовые сбросы стилей для всего документа.
+ * Гарантирует отсутствие отступов и корректное вычисление размеров.
+ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/*
+ * Основной контейнер страницы.
+ * Центрирует игровой интерфейс по вертикали и горизонтали.
+ * Минимальная высота — 100vh, чтобы занимать весь экран.
+ */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background: #2c3e50;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/*
+ * Обертка игрового интерфейса.
+ * Содержит HUD, доску и статус.
+ * Элементы выстроены вертикально с отступом 16px.
+ */
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/*
+ * Панель информации (HUD).
+ * Отображает счёт, время или другие игровые метрики.
+ * Цвет текста подобран для контраста на тёмном фоне.
+ */
+.hud {
+  display: flex;
+  gap: 40px;
+  color: #ecf0f1;
+  font-size: 20px;
+}
+
+/*
+ * Подпись элемента HUD (например, «Счёт:»).
+ * Полупрозрачный текст для визуального разделения подписи и значения.
+ */
+.hud-label {
+  opacity: 0.7;
+}
+
+/*
+ * Значение элемента HUD (например, число счёта).
+ * Выделено жирным и имеет небольшой отступ слева.
+ */
+.hud-value {
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+/*
+ * Игровое поле (доска).
+ * Реализовано через CSS Grid: 4×4 ячейки.
+ * Кастомный курсор в виде молотка (с запасным вариантом pointer).
+ */
 .board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  width: 400px;
-  height: 400px;
+  width: 480px;
+  height: 480px;
   gap: 2px;
   background: #34495e;
   padding: 2px;
   border-radius: 8px;
+  cursor: url('../img/hammer.png') 16 16, pointer;
 }
 
+/*
+ * Отдельная ячейка игрового поля.
+ * Центрирует содержимое (картинку молотка) внутри ячейки.
+ */
 .cell {
   background: #ecf0f1;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: inherit;
 }
 
+/*
+ * Картинка внутри ячейки.
+ * Занимает 80% размера ячейки, сохраняя пропорции.
+ * pointer-events: none позволяет кликать «сквозь» картинку на саму ячейку.
+ */
 .cell img {
   width: 80%;
   height: 80%;
   object-fit: contain;
+  pointer-events: none;
+}
+
+/*
+ * Текстовый статус игры (например, «Победа», «Поражение»).
+ * Красный цвет и жирный шрифт для привлечения внимания.
+ */
+.status {
+  color: #e74c3c;
+  font-size: 24px;
+  font-weight: bold;
+  min-height: 32px;
+  text-align: center;
+}
+
+/*
+ * Скрытое состояние статуса.
+ * Используется, когда статус не нужно отображать.
+ */
+.status.hidden {
+  visibility: hidden;
+}
+
+/*
+ * Состояние «игра окончена».
+ * Делает доску чёрно‑белой и полупрозрачной, визуально сигнализируя о завершении.
+ */
+.game-over {
+  filter: grayscale(100%);
+  opacity: 0.5;
 }

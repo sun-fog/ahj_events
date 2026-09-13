@@ -2,12 +2,22 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <title>Перемещение элемента</title>
+    <title>Игра: Гоблины</title>
   </head>
   <body>
-    <div id="game-container">
+    <div class="game-wrapper">
+      <div class="hud">
+        <div class="hud-item">
+          <span class="hud-label">Попадания:</span>
+          <span class="hud-value" id="score">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">Промахи:</span>
+          <span class="hud-value" id="misses">0 / 5</span>
+        </div>
+      </div>
       <div class="board" id="board"></div>
+      <div class="status" id="status"></div>
     </div>
   </body>
 </html>
-
