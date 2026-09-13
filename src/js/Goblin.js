@@ -3,7 +3,7 @@
  * @type {string}
  */
 const GOBLIN_URL =
-  'https://raw.githubusercontent.com/netology-code/ahj-homeworks/AHJ-50/dom/pic/goblin.png';
+  "https://raw.githubusercontent.com/netology-code/ahj-homeworks/AHJ-50/dom/pic/goblin.png";
 
 /**
  * Класс, управляющий появлением, исчезновением и логикой «поражения» гоблина.
@@ -38,9 +38,9 @@ export default class Goblin {
      * Элемент изображения гоблина.
      * @type {HTMLImageElement}
      */
-    this.img = document.createElement('img');
+    this.img = document.createElement("img");
     this.img.src = GOBLIN_URL;
-    this.img.alt = 'Гоблин';
+    this.img.alt = "Гоблин";
   }
 
   /**
@@ -70,9 +70,9 @@ export default class Goblin {
 
   /**
    * Проверяет, попал ли игрок в гоблина по указанному индексу ячейки.
-   * Если попадание есть — убирает гоблина и возвращает true, иначе — false.
+   * Если попадание есть - убирает гоблина и возвращает true, иначе - false.
    * @param {number} index - Индекс ячейки, по которой кликнул игрок.
-   * @returns {boolean} true, если игрок попал в гоблина; false — если промахнулся.
+   * @returns {boolean} true, если игрок попал в гоблина; false - если промахнулся.
    */
   hit(index) {
     if (index === this.currentIndex) {

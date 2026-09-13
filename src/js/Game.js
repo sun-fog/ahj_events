@@ -1,6 +1,6 @@
-import GameField from './GameField.js';
-import Goblin from './Goblin.js';
-import Scoreboard from './Scoreboard.js';
+import GameField from "./GameField.js";
+import Goblin from "./Goblin.js";
+import Scoreboard from "./Scoreboard.js";
 
 /**
  * Интервал появления гоблина в миллисекундах.
@@ -60,7 +60,7 @@ export default class Game {
      * Элемент DOM для отображения статуса игры (например, сообщения об окончании).
      * @type {HTMLElement | null}
      */
-    this.statusEl = document.getElementById('status');
+    this.statusEl = document.getElementById("status");
   }
 
   /**
@@ -73,10 +73,12 @@ export default class Game {
     this.field.reset();
     this.active = true;
 
-    this._showStatus('');
+    this._showStatus("");
 
     // Обработка кликов по полю (делегирование)
-    this.field.boardEl.addEventListener('click', (event) => this._onClick(event));
+    this.field.boardEl.addEventListener("click", (event) =>
+      this._onClick(event),
+    );
 
     // Первый гоблин появляется сразу
     this.goblin.appear();
@@ -87,13 +89,13 @@ export default class Game {
 
   /**
    * Внутренний метод-тик таймера. Вызывается каждую секунду.
-   * Проверяет, был ли гоблин поражён: если нет — засчитывает промах,
-   * затем создаёт нового гоблина. Если игра окончена — останавливает цикл.
+   * Проверяет, был ли гоблин поражён: если нет - засчитывает промах,
+   * затем создаёт нового гоблина. Если игра окончена - останавливает цикл.
    */
   _tick() {
     if (!this.active) return;
 
-    // Если гоблин ещё в поле — значит, его не «сбили» → промах
+    // Если гоблин ещё в поле - значит, его не «сбили» → промах
     if (this.goblin.currentIndex !== -1) {
       this.scoreboard.addMiss();
       this.goblin.disappear();
@@ -116,7 +118,7 @@ export default class Game {
   _onClick(event) {
     if (!this.active) return;
 
-    const cell = event.target.closest('.cell');
+    const cell = event.target.closest(".cell");
     if (!cell) return;
 
     const index = parseInt(cell.dataset.index, 10);
@@ -136,21 +138,21 @@ export default class Game {
     clearInterval(this.timerId);
     this.goblin.disappear();
     this.field.setGameOver();
-    this._showStatus('Игра окончена! Обновите страницу, чтобы начать заново.');
+    this._showStatus("Игра окончена! Обновите страницу, чтобы начать заново.");
   }
 
   /**
    * Обновляет текст статуса игры в DOM-элементе #status.
-   * Если текст не передан — скрывает статус (добавляет класс hidden).
+   * Если текст не передан - скрывает статус (добавляет класс hidden).
    * @param {string} [text] - Текст для отображения. Если не указан, статус скрывается.
    */
   _showStatus(text) {
     if (this.statusEl) {
       if (text) {
         this.statusEl.textContent = text;
-        this.statusEl.classList.remove('hidden');
+        this.statusEl.classList.remove("hidden");
       } else {
-        this.statusEl.classList.add('hidden');
+        this.statusEl.classList.add("hidden");
       }
     }
   }

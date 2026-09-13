@@ -25,10 +25,10 @@ export default class GameField {
      * Корневой элемент игрового поля в DOM (должен иметь id="board").
      * @type {HTMLElement}
      */
-    this.boardEl = document.getElementById('board');
+    this.boardEl = document.getElementById("board");
 
     if (!this.boardEl) {
-      throw new Error('Элемент #board не найден');
+      throw new Error("Элемент #board не найден");
     }
   }
 
@@ -39,13 +39,13 @@ export default class GameField {
    * @returns {HTMLDivElement[]} Массив созданных ячеек.
    */
   create() {
-    this.boardEl.innerHTML = '';
+    this.boardEl.innerHTML = "";
     this.cells = [];
 
     const totalCells = this.boardSize * this.boardSize;
     for (let i = 0; i < totalCells; i++) {
-      const cell = document.createElement('div');
-      cell.classList.add('cell');
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
       cell.dataset.index = String(i);
       this.boardEl.appendChild(cell);
       this.cells.push(cell);
@@ -83,7 +83,7 @@ export default class GameField {
    * Добавляет CSS-класс .game-over к корневому элементу поля.
    */
   setGameOver() {
-    this.boardEl.classList.add('game-over');
+    this.boardEl.classList.add("game-over");
   }
 
   /**
@@ -91,7 +91,7 @@ export default class GameField {
    * от содержимого (удаляет изображение гоблина).
    */
   reset() {
-    this.boardEl.classList.remove('game-over');
+    this.boardEl.classList.remove("game-over");
     this.clearGoblin();
   }
 
@@ -101,7 +101,7 @@ export default class GameField {
    */
   clearGoblin() {
     this.cells.forEach((cell) => {
-      cell.innerHTML = '';
+      cell.innerHTML = "";
     });
   }
 }

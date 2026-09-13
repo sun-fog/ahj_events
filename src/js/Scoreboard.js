@@ -22,7 +22,7 @@ export default class Scoreboard {
     this.misses = 0;
 
     /**
-     * Максимально допустимое количество промахов — по достижении этого значения игра завершается.
+     * Максимально допустимое количество промахов - по достижении этого значения игра завершается.
      * @type {number}
      */
     this.maxMisses = maxMisses;
@@ -31,14 +31,14 @@ export default class Scoreboard {
      * Элемент DOM для отображения текущего счёта (должен иметь id="score").
      * @type {HTMLElement | null}
      */
-    this.scoreEl = document.getElementById('score');
+    this.scoreEl = document.getElementById("score");
 
     /**
      * Элемент DOM для отображения количества промахов (должен иметь id="misses").
-     * Формат вывода: «X / Y», где X — текущие промахи, Y — максимум.
+     * Формат вывода: «X / Y», где X - текущие промахи, Y - максимум.
      * @type {HTMLElement | null}
      */
-    this.missesEl = document.getElementById('misses');
+    this.missesEl = document.getElementById("misses");
   }
 
   /**
@@ -60,7 +60,7 @@ export default class Scoreboard {
   /**
    * Проверяет, превышено ли максимально допустимое количество промахов.
    * Используется для определения момента окончания игры.
-   * @returns {boolean} true, если количество промахов достигло или превысило лимит; иначе — false.
+   * @returns {boolean} true, если количество промахов достигло или превысило лимит; иначе - false.
    */
   isGameOver() {
     return this.misses >= this.maxMisses;
