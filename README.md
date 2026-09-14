@@ -1,2 +1,29 @@
-Домашнее задание к занятию "3.Обработка событий"
-![CI](https://github.com/sun-fog/ahj_events/actions/workflows/web.yml/badge.svg)
+# Домашнее задание к занятию «3. Обработка событий»
+
+[![CI](https://github.com/sun-fog/ahj_events/actions/workflows/web.yml/badge.svg)](https://github.com/sun-fog/ahj_events/actions)
+
+🎮 [Запустить игру](https://sun-fog.github.io/ahj_events/ "Откроется страница игры на GitHub Pages")
+
+## Правила игры
+
+Игра «Ударь гоблина»:
+- На игровом поле случайным образом появляется гоблин.
+- Ваша задача — кликнуть по ячейке, где находится гоблин.
+- За каждое попадание начисляются очки.
+- Если гоблин исчезает без попадания — засчитывается промах.
+- При достижении 5 промахов игра заканчивается.
+
+## Как запустить локально
+
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/sun-fog/ahj_events.git
+   cd ahj_events
+
+2. Установите зависимости:
+   ```bash
+   yarn install
+
+3. Запустите локальный сервер (для корректной работы статики и путей):
+   ```bash
+   yarn start

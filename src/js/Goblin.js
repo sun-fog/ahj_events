@@ -1,9 +1,4 @@
-/**
- * URL изображения гоблина, размещённого в репозитории Netology.
- * @type {string}
- */
-const GOBLIN_URL =
-  "https://raw.githubusercontent.com/netology-code/ahj-homeworks/AHJ-50/dom/pic/goblin.png";
+import goblinImg from '../img/goblin.png';
 
 /**
  * Класс, управляющий появлением, исчезновением и логикой «поражения» гоблина.
@@ -38,9 +33,9 @@ export default class Goblin {
      * Элемент изображения гоблина.
      * @type {HTMLImageElement}
      */
-    this.img = document.createElement("img");
-    this.img.src = GOBLIN_URL;
-    this.img.alt = "Гоблин";
+    this.img = document.createElement('img');
+    this.img.src = goblinImg;
+    this.img.alt = 'Гоблин';
   }
 
   /**
